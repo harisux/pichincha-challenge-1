@@ -4,3 +4,7 @@ server:
 spring:
   application:
     name: currencyexchange
+  r2dbc:
+    url: r2dbc:h2:mem:///currencyexchangedb
+    username: test
+    password: test

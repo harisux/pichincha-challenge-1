@@ -5,7 +5,7 @@ import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
 import reactor.core.publisher.Mono;
 
-public interface ExchageRateRepository extends ReactiveCrudRepository<ExchangeRate, Long>{
+public interface ExchangeRateRepository extends ReactiveCrudRepository<ExchangeRate, Long>{
     
     Mono<ExchangeRate> findByOriginAndDestination(String origin, String destination);
 

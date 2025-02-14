@@ -15,6 +15,10 @@ import lombok.Setter;
  */
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder(toBuilder = true)
 public class ConvertAmountState {
+
+    private Long userId;
+
+    private String userName;
     
     private ExchangeRate exchangeRate;
 

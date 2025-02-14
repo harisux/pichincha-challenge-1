@@ -8,3 +8,11 @@ spring:
     url: r2dbc:h2:mem:///currencyexchangedb
     username: test
     password: test
+
+external-apis:
+  users-api:
+    base-url: https://gorest.co.in
+    users-path: /public/v2/users
+    id-key: id
+
+

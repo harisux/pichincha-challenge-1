@@ -9,6 +9,11 @@ spring:
     username: test
     password: test
 
+springdoc:
+  swagger-ui:
+    enabled: true
+
+
 external-apis:
   users-api:
     base-url: https://gorest.co.in

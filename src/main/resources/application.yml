@@ -8,6 +8,8 @@ spring:
     url: r2dbc:h2:mem:///currencyexchangedb
     username: test
     password: test
+  profiles:
+    active: dev
 
 springdoc:
   swagger-ui:
@@ -19,5 +21,9 @@ external-apis:
     base-url: https://gorest.co.in
     users-path: /public/v2/users
     id-key: id
+
+jwt-auth:
+  secret: XCkeB9aPz2vniihuCUyVYtVS4p0EXZ0Q
+
 
 

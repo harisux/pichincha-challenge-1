@@ -1,4 +1,4 @@
-package org.haris.chaudhrym.currencyexchange.test;
+package org.haris.chaudhrym.currencyexchange.rest;
 
 import org.haris.chaudhrym.currencyexchange.model.ConvertAmountRequest;
 import org.haris.chaudhrym.currencyexchange.model.ConvertAmountResponse;

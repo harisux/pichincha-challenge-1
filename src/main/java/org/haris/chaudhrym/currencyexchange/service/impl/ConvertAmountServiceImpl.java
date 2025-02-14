@@ -2,6 +2,8 @@ package org.haris.chaudhrym.currencyexchange.service.impl;
 
 import java.time.LocalDateTime;
 
+import org.haris.chaudhrym.currencyexchange.exception.ExchangeRateNotFoundException;
+import org.haris.chaudhrym.currencyexchange.exception.UserApiException;
 import org.haris.chaudhrym.currencyexchange.model.ConvertAmountRequest;
 import org.haris.chaudhrym.currencyexchange.model.ConvertAmountResponse;
 import org.haris.chaudhrym.currencyexchange.persistence.ExchangeRateRepository;
@@ -43,7 +45,7 @@ public class ConvertAmountServiceImpl implements ConvertAmountService {
     public Mono<ConvertAmountResponse> convertExchangeAmount(Mono<ConvertAmountRequest> request) {
         return request
             .flatMap(req -> exchangeRateRepository.findByOriginAndDestination(req.getOrigin(), req.getDestination())
-                .switchIfEmpty(Mono.error(new RuntimeException("Exchange rate for the provided currencies is not available!")))
+                .switchIfEmpty(Mono.error(new ExchangeRateNotFoundException("Exchange rate for the provided currencies is not available!")))
                 .map(rate -> ConvertAmountState.builder()
                         .userId(req.getUserId())
                         .amount(req.getAmount())
@@ -83,13 +85,12 @@ public class ConvertAmountServiceImpl implements ConvertAmountService {
             )
             .retrieve()
             .onStatus(HttpStatusCode::isError, res ->
-                Mono.error(new RuntimeException("Unable to fetch users from API!"))
+                Mono.error(new UserApiException("Unable to get users from API!"))
             )
             .bodyToMono(UsersApiResponse[].class)
-            .switchIfEmpty(Mono.error(new RuntimeException("Provided user does not exist!")))
             .flatMap(users -> { 
                 if (users.length == 0) {
-                    return Mono.error(new RuntimeException("No user with such id found!"));
+                    return Mono.error(new UserApiException("Provided user does not exist!"));
                 }
                 return Mono.just(users[0]);
             });

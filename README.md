@@ -19,6 +19,7 @@ Coding challenge to build a currency exchange REST API
 -----------------------------------
 
 ## Testing of solution
+Postman collection [here](./Pichincha-Exchange-Rate-Challenge.postman_collection)
 
 ### Currency exchange API Testing
 

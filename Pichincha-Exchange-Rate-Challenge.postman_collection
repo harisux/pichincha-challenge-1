@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "f23130cd-6410-4925-a913-f719f346bef6",
+		"name": "Pichincha Exchange Rate challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25783027"
+	},
+	"item": [
+		{
+			"name": "Get testing token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 7697801,\r\n    \"amount\": 100.00,\r\n    \"origin\": \"USD\",\r\n    \"destination\": \"PEN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8085/testing/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"testing",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "External Users API",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users?id=7697800",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7697800"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Exchange amount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0c3ViamVjdCIsImlhdCI6MTczOTU4MzAxMSwiZXhwIjoxNzM5NTg2NjExfQ.XUIgyyEpBkn2EruHPkVW8ohaYhVvPH-I_lDHa_qoSws",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": 7700541,\r\n    \"amount\": 100.00,\r\n    \"origin\": \"USD\",\r\n    \"destination\": \"PEN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8085/api/v1/exchange",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"v1",
+						"exchange"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -15,13 +15,15 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
 @Service
 @Slf4j
-@RequiredArgsConstructor
+@RequiredArgsConstructor @Getter @Setter
 public class ConvertAmountServiceImpl implements ConvertAmountService {
 
     private final ExchangeRateRepository exchangeRateRepository;
